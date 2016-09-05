@@ -24,8 +24,3 @@ type Anime struct {
 	Subtitle          []Subtitle `json:"subtitles"`
 	Extra             []string   `json:"extra"`
 }
-
-// Metadata ...
-type Metadata struct {
-	Metadata Anime `json:"metadata"`
-}
