@@ -41,7 +41,7 @@ func TestMetadataFileCreate(t *testing.T) {
 		t.Fatal("metadata.json exist")
 	}
 
-	err = mt.Create()
+	err = mt.Write()
 	if err != nil {
 		t.Fatal(err)
 	}

@@ -6,6 +6,27 @@ type Title struct {
 	Lang string `json:"lang"`
 }
 
+// NewTitle ...
+func NewTitle(args []string) *Title {
+	var t string
+	var l string
+
+	switch len(args) {
+	case 1:
+		t = args[0]
+	case 2:
+		t = args[0]
+		l = args[1]
+	default:
+		return nil
+	}
+
+	return &Title{
+		Text: t,
+		Lang: l,
+	}
+}
+
 // Subtitle ...
 type Subtitle struct {
 	Lang   string   `json:"lang"`

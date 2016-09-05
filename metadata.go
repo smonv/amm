@@ -30,14 +30,29 @@ func (m *Metadata) Exist() error {
 	return nil
 }
 
-// Create create new metadata.json
-func (m *Metadata) Create() error {
+// Write create new metadata.json
+func (m *Metadata) Write() error {
 	data, err := json.MarshalIndent(m, "", "    ")
 	if err != nil {
 		return err
 	}
 
 	err = ioutil.WriteFile(m.path, data, 0644)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// Load ...
+func (m *Metadata) Load() error {
+	data, err := ioutil.ReadFile(m.path)
+	if err != nil {
+		return err
+	}
+
+	err = json.Unmarshal(data, m)
 	if err != nil {
 		return err
 	}
