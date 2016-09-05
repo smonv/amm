@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"os"
 
 	"github.com/tthanh/amm"
@@ -18,11 +17,8 @@ func main() {
 
 	switch args[0] {
 	case "init":
-		err := amm.Init()
-		if err != nil {
-			fmt.Println(err)
-			return
-		}
-		fmt.Println("metadata.json created")
+		amm.Init()
+	default:
+		return
 	}
 }

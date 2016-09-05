@@ -3,31 +3,34 @@ package amm
 import (
 	"encoding/json"
 	"errors"
+	"log"
+	"os"
 )
 
 var (
-	// ErrExist ...
-	ErrExist = errors.New("metadata.json exist")
+	l = log.New(os.Stdout, "", 0)
+
+	errExist = errors.New("metadata.json exist")
 )
 
 // Init ...
-func Init() error {
+func Init() {
 	mpath := mpath()
 	r := exist(mpath)
 	if !r {
 		m := &Metadata{}
-		data, err := json.MarshalIndent(m, "", "\t")
+		data, err := json.MarshalIndent(m, "", "    ")
 		if err != nil {
-			return err
+			l.Fatal(err)
 		}
 		err = create(data, mpath)
 		if err != nil {
-			return err
+			l.Fatal(err)
 		}
 	}
 	if r {
-		return ErrExist
+		l.Fatal(errExist)
 	}
 
-	return nil
+	l.Println("metadata.json created")
 }
