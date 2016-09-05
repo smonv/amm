@@ -1,7 +1,7 @@
 package amm
 
-// AlternativeTitle ...
-type AlternativeTitle struct {
+// Title ...
+type Title struct {
 	Text string `json:"text"`
 	Lang string `json:"lang"`
 }
@@ -16,10 +16,11 @@ type Subtitle struct {
 
 // Anime ...
 type Anime struct {
-	Title             string             `json:"title"`
-	AlternativeTitles []AlternativeTitle `json:"alternative_titles"`
-	Type              string             `json:"type"`
-	Episodes          int                `json:"episodes"`
-	Subtitle          []Subtitle         `json:"subtitles"`
-	Extra             []string           `json:"extra"`
+	Title             Title      `json:"title"`
+	AlternativeTitles []Title    `json:"alternative_titles"`
+	Synonyms          []string   `json:"synonyms"`
+	Type              string     `json:"type"`
+	Episodes          int        `json:"episodes"`
+	Subtitle          []Subtitle `json:"subtitles"`
+	Extra             []string   `json:"extra"`
 }
